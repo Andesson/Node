@@ -1,23 +1,18 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "Node",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Andesson/Node.git"
-  },
   "author": "Andesson Lins <andessonlins93@gmail.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Andesson/Node/issues"
-  },
-  "homepage": "https://github.com/Andesson/Node#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mysql2": "^1.6.5"
+    "mongoose": "^5.6.11",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.1"
   }
 }

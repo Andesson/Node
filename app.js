@@ -1,15 +1,48 @@
-const http = require('http');
+const express = require('express');
+const app = express();         
+const bodyParser = require('body-parser');
+const port = 3000; //porta padrão
+const mysql = require('mysql');
 
-const hostname = '127.0.0.1';
-const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  console.log('OK')
-  res.end('Node.js\n');
-});
+	
+//inicia o servidor
+app.listen(port);
+console.log('API funcionando!');
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+//configurando o body parser para pegar POSTS mais tarde
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+	
+//definindo as rotas
+const router = express.Router();
+
+//main
+router.get('/', (req, res) => res.json({ message: 'Funcionando!' }));
+app.use('/', router);
+
+app.post('/users', (req, res) => {
+  res.json(users)
+})
+
+
+//MySQL
+function execSQLQuery(sqlQry, res){
+  const connection = mysql.createConnection({
+    host     : 'localhost',
+    port     : 3306,
+    user     : 'root',
+    password : '',
+    database : 'test'
+  });
+ 
+  connection.query(sqlQry, function(error, results, fields){
+      if(error) 
+        res.json(error);
+      else
+        res.json(results);
+      connection.end();
+      console.log('executou!');
+  });
+}
+
