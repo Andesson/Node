@@ -10,14 +10,13 @@ const mysql = require('mysql');
 app.listen(port);
 console.log('API funcionando!');
 
-//configurando o body parser para pegar POSTS mais tarde
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 	
-//definindo as rotas
+
 const router = express.Router();
 
-//main
 router.get('/', (req, res) => res.json({ message: 'Funcionando!' }));
 app.use('/', router);
 
